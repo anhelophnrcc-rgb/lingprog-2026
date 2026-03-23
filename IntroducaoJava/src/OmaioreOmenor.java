@@ -4,18 +4,18 @@ public class OmaioreOmenor {
     public static void main(String[] args) {
 
         Scanner entrada = new Scanner(System.in);
-        int[] numeros = new int[10];
+        double[] numeros = new double[10];
 
-        for (int i = 0; i < 10; i++) {
-            System.out.println("Digite um número: ");
-            numeros[i] = entrada.nextInt();
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.println("Digite o " + (i + 1) + "º número: ");
+            numeros[i] = entrada.nextDouble();
         }
-        int maior = numeros[0];
-        int menor = numeros[0];
+        double maior = numeros[0];
+        double menor = numeros[0];
         int posMaior = 0;
         int posMenor = 0;
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i < numeros.length; i++) {
             if (numeros[i] > maior) {
                 maior = numeros[i];
                 posMaior = i;

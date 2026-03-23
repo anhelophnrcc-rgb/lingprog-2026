@@ -4,15 +4,15 @@ public class InversorDeNomes {
     public static void main(String[] args) {
 
         Scanner entrada = new Scanner(System.in);
-        String[] nome = new String[5];
+        String[] nomes = new String[5];
 
-        for (int i = 0; i < 5; i++) {
-            System.out.println("Digite um nome: ");
-            nome[i] = entrada.nextLine();
+        for (int i = 0; i < nomes.length; i++) {
+            System.out.println("Digite o " + (i + 1) +"º nome: ");
+            nomes[i] = entrada.nextLine();
         }
         System.out.println("\n Nomes na ordem inversa: ");
-        for (int i = 4; i >= 0; i--) {
-            System.out.println(nome[i]);
+        for (int i = nomes.length - 1; i >= 0; i--) {
+            System.out.println(nomes[i]);
         }
     }
 }

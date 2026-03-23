@@ -7,15 +7,16 @@ public class SomaDePares {
         int[] numeros = new int[8];
         int soma = 0;
 
-        for (int i = 0; i < 8; i++) {
-            System.out.println("Digite um número: ");
+        int i;
+        for (i = 0; i < numeros.length; i++) {
+            System.out.println("Digite o " + (i + 1) + "º um número inteiro: ");
             numeros[i] = entrada.nextInt();
         }
-        for(int i = 0; i < 8; i++){
-            if(numeros[i] % 2 == 0){
-                soma = soma + numeros[i];
-            }
+
+        if (numeros[i] % 2 == 0) {
+            soma = soma + numeros[i];
         }
+
         System.out.println("Soma dos números pares: " + soma);
     }
 }
