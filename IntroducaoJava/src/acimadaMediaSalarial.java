@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class acimadaMediaSalarial {
@@ -5,21 +6,20 @@ public class acimadaMediaSalarial {
 
         Scanner entrada = new Scanner(System.in);
         double[] salarios = new double[5];
-
         double soma = 0;
 
-        for(int i = 0; i < 5; i++){
-            System.out.println("Digite o salário: ");
+        for(int i = 0; i < salarios.length; i++){
+            System.out.println("Informe o salario " + (i + 1) + ": ");
             salarios[i] = entrada.nextDouble();
             soma = soma + salarios[i];
         }
-        double media = soma / 5;
+        double media = soma / salarios.length;
 
         int iguais = 0;
         int acima = 0;
         int abaixo = 0;
 
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < salarios.length; i++){
             if(salarios[i] == media){
                 iguais++;
             }
