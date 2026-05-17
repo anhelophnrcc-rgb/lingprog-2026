@@ -1,0 +1,17 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class Main {
+    public static void main(String[] args){
+        String url = "jdbc:postgresql://localhost:5432/Fastmed";
+        try { //tenta se conctar no banco de dados
+            Connection conn = DriverManager.getConnection(url, "postgres", "fatec123*");
+            System.out.println(" Conectadp com sucesso!");
+
+        }
+        catch (SQLException e) { // caso de erro , envia pra ca
+            System.out.println("Erro ao conectar o banco de dados " + e.getSQLState());
+        }
+    }
+}
