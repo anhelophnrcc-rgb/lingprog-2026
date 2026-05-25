@@ -1,0 +1,51 @@
+import java.sql.*;
+import java.util.Scanner;
+
+public class bazar_iansa {
+    public static void criarTabelaUsuarios(Connection conn) throws SQLException{
+        String sql = "CREATE TABLE IF NOT EXISTS usuarios (" +
+                     "id SERIAL PRIMARY KEY, " +
+                     "nome TEXT NOT NULL, " +
+                     "email TEXT UNIQUE NOT NULL, " +
+                     "cpf TEXT UNIQUE NOT NULL, " +
+                     "senha TEXT NOT NULL, " +
+                     "perfil TEXT NOT NULL)";
+        //cria objeto de instrução sql
+        Statement stmt = conn.createStatement();
+        stmt.execute(sql);
+        stmt.close();
+        System.out.println("Tabela de usuarios criada!");
+    }
+    //cria tabela cadastrar usuários
+    public static void casdastrarUsuario(Connection conn, Scanner sc) throws SQLException{
+        System.out.println("Informe o nome: ");
+        String nome = sc.nextLine();
+        System.out.println("Informe o email: ");
+        String email = sc.nextLine();
+        System.out.println("Informe o cpf: ");
+        String cpf = sc.nextLine();
+        System.out.println("Informe a senha: ");
+        String senha = sc.nextLine();
+        System.out.println("Informe o perfil: ");
+        String perfil = sc.nextLine();
+        //cria SQL
+        String sql = "INSERT INTO usuarios" + "(nome, cpf, senha, perfil)" +
+    }
+    public static void main(String[] args) {
+
+        String url = "jdbc:postgresql://localhost:5432/bazar_iansa";
+        try {
+            // tenta conectar no banco
+            Connection conn = DriverManager.getConnection(url,"postgres", "fatec123*");
+            System.out.println("Conexao com sucesso");
+
+            // cria tabela usuarios
+            criarTabelaUsuarios(conn);
+        }
+        catch (SQLException e) {
+
+            System.out.println("Erro ao conectar " + e.getMessage());
+        }
+    }
+
+}
