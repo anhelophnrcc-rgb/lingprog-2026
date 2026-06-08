@@ -1,0 +1,35 @@
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+//Escrevendo e lendo uma lisrta de compras
+
+public class exercicio2 {
+    public static void main(String[] args) {
+        try {
+            // Escrevendo no arquivo
+            PrintWriter pw = new PrintWriter("compras.txt");
+
+            pw.println("Arroz");
+            pw.println("Feijão");
+            pw.println("Macarrão");
+            pw.println("Óleo");
+            pw.println("Sal");
+            pw.close();
+
+            // Lendo o arquivo
+            Scanner sc = new Scanner(new File("compras.txt"));
+            int contador = 1;
+
+            while (sc.hasNextLine()) { String item = sc.nextLine();
+                System.out.println(contador + ". " + item);
+                contador++;
+            }
+            sc.close();
+        }
+        catch (IOException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+    }
+}
