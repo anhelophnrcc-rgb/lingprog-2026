@@ -1,0 +1,97 @@
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+//Agenda de Contatos com CRUD em Arquivo
+
+public class exercicio5 {
+    public static void listar() throws IOException {
+
+        BufferedReader br = new BufferedReader( new FileReader("agenda.csv") );
+        String linha;
+
+        while ((linha = br.readLine()) != null) { String[] p = linha.split(",");
+
+            System.out.println( "ID: " + p[0] + " Nome: " + p[1] + " Telefone: " + p[2] + " Email: " + p[3] );
+        }
+        br.close();
+    }
+    public static void inserir(Scanner sc) throws IOException { BufferedReader br = new BufferedReader( new FileReader("agenda.csv") );
+        String linha;
+        int ultimoId = 0;
+        while ((linha = br.readLine()) != null) { String[] p = linha.split(",");
+            ultimoId = Integer.parseInt(p[0]);
+        }
+        br.close();
+
+        int novoId = ultimoId + 1; System.out.print("Nome: ");
+        String nome = sc.nextLine();
+        System.out.print("Telefone: ");
+        String telefone = sc.nextLine();
+        System.out.print("Email: ");
+        String email = sc.nextLine();
+        PrintWriter pw = new PrintWriter( new FileWriter("agenda.csv", true) );
+        pw.println(novoId + "," + nome + "," + telefone + "," + email); pw.close();
+        System.out.println("Contato inserido!");
+    }
+    public static void buscar(Scanner sc) throws IOException {
+        System.out.print("Digite o nome: ");
+        String busca = sc.nextLine();
+        BufferedReader br = new BufferedReader( new FileReader("agenda.csv") );
+        String linha;
+        while ((linha = br.readLine()) != null) { String[] p = linha.split(",");
+            if (p[1].equalsIgnoreCase(busca)) {
+                System.out.println( "ID: " + p[0] + " Nome: " + p[1] + " Telefone: " + p[2] + " Email: " + p[3] );
+            }
+        }
+        br.close();
+    }
+    public static void remover(Scanner sc) throws IOException {
+        System.out.print("Digite o ID: ");
+        String id = sc.nextLine();
+        BufferedReader br = new BufferedReader( new FileReader("agenda.csv") );
+        ArrayList<String> linhas = new ArrayList<>();
+        String linha;
+        while ((linha = br.readLine()) != null) { String[] p = linha.split(",");
+            if (!p[0].equals(id)) { linhas.add(linha);
+            }
+        }
+        br.close();
+        PrintWriter pw = new PrintWriter("agenda.csv");
+
+        for (String l : linhas) {
+            pw.println(l);
+        }
+        pw.close();
+
+        System.out.println("Contato removido!");
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int opcao;
+        do { System.out.println("\n=== Agenda ===");
+            System.out.println("1. Listar");
+            System.out.println("2. Inserir");
+            System.out.println("3. Buscar");
+            System.out.println("4. Remover");
+            System.out.println("0. Sair");
+            opcao = Integer.parseInt(sc.nextLine());
+
+            try {
+                switch (opcao) { case 1: listar();
+                    break;
+                    case 2: inserir(sc);
+                    break;
+                    case 3: buscar(sc);
+                    break;
+                    case 4: remover(sc);
+                    break;
+                }
+            }
+            catch (IOException e) { System.out.println("Erro: " + e.getMessage());
+            }
+        }
+        while (opcao != 0);
+        sc.close();
+    }
+}
