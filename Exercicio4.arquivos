@@ -1,0 +1,56 @@
+import java.io.*;
+
+//relatorio de notas
+
+public class exercicio4 {
+    public static void gravarNotas() throws IOException {
+
+        PrintWriter pw = new PrintWriter("notas.txt");
+        pw.println("Ana,8.5");
+        pw.println("Bruno,6.0");
+        pw.println("Carla,9.2");
+        pw.println("Daniel,7.4");
+        pw.println("Elena,5.8");
+        pw.close();
+    }
+    public static void gerarRelatorio() throws IOException {
+        BufferedReader br = new BufferedReader( new FileReader("notas.txt") );
+        PrintWriter pw = new PrintWriter("relatorio.txt");
+        String linha;
+        double soma = 0;
+        int total = 0;
+        pw.println("=== Relatório de Notas ===");
+        pw.printf("%-10s %-10s %-10s%n", "Nome", "Nota", "Situação");
+
+        while ((linha = br.readLine()) != null) { String[] partes = linha.split(",");
+
+            String nome = partes[0];
+
+            double nota = Double.parseDouble(partes[1]);
+
+            String situacao;
+            if (nota >= 6.0) { situacao = "Aprovado";
+            }
+            else {
+                situacao = "Reprovado";
+            }
+            pw.printf("%-10s %-10.1f %-10s%n", nome, nota, situacao);
+
+            soma += nota; total++;
+        }
+        double media = soma / total;
+        pw.println();
+        pw.println("Média da turma: " + media); br.close();
+        pw.close();
+    }
+    public static void main(String[] args) {
+        try {
+            gravarNotas();
+            gerarRelatorio();
+            System.out.println("Relatório gerado com sucesso!");
+        }
+        catch (IOException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+    }
+}
