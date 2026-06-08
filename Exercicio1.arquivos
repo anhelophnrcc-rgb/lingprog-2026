@@ -1,0 +1,23 @@
+import java.io.File;
+import java.io.IOException;
+
+// arquivos de recados
+
+public class exercicio1 {
+    public static void main(String[] args) {
+
+        File f = new File("recados.txt");
+
+        try {
+            if (f.exists()) {
+                System.out.println("Arquivo: " + f.getName());
+                System.out.println("Tamanho: " + f.length() + " bytes");
+            } else {
+                f.createNewFile();
+                System.out.println("Arquivo criado com sucesso!");
+            }
+        } catch (IOException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+    }
+}
