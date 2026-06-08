@@ -1,0 +1,80 @@
+import java.io.*;
+
+//Processador CSV
+        
+public class exercicio6 {
+    public static void main(String[] args) {
+
+        try { BufferedReader br = new BufferedReader( new FileReader("alunos.csv") );
+            PrintWriter aprovados = new PrintWriter("aprovados.csv");
+            PrintWriter relatorio = new PrintWriter("relatorio_final.txt");
+            String linha;
+            int total = 0;
+            int aprov = 0;
+            int rec = 0;
+            int repr = 0;
+            double somaGeral = 0;
+            double maior = -1;
+            double menor = 999;
+            String nomeMaior = "";
+            String nomeMenor = "";
+
+
+            relatorio.println("========================================");
+
+            relatorio.println("RELATÓRIO FINAL DA TURMA");
+
+            relatorio.println("========================================");
+
+            while ((linha = br.readLine()) != null) { String[] p = linha.split(",");
+                String nome = p[0];
+                double n1 = Double.parseDouble(p[1]);
+                double n2 = Double.parseDouble(p[2]);
+                double n3 = Double.parseDouble(p[3]);
+                double media = (n1 + n2 + n3) / 3;
+                String situacao;
+
+                if (media >= 7) { situacao = "Aprovado"; aprov++; aprovados.printf("%s,%.2f%n", nome, media);
+                }
+                else if (media >= 5) {
+                    situacao = "Recuperação"; rec++;
+                }
+                else {
+                    situacao = "Reprovado";
+                    repr++;
+                }
+                relatorio.printf("%-10s %.2f %s%n", nome, media, situacao);
+                somaGeral += media;
+                total++;
+                if (media > maior) {
+                    maior = media;
+                    nomeMaior = nome;
+                }
+                if (media < menor) {
+                    menor = media;
+                    nomeMenor = nome;
+                }
+            }
+            double mediaGeral = somaGeral / total;
+
+            relatorio.println("----------------------------------------");
+
+            relatorio.println("Total de alunos: " + total);
+            relatorio.println("Aprovados: " + aprov);
+            relatorio.println("Recuperação: " + rec);
+            relatorio.println("Reprovados: " + repr);
+            relatorio.printf("Média geral: %.2f%n", mediaGeral);
+            relatorio.printf("Maior média: %.2f (%s)%n", maior, nomeMaior);
+            relatorio.printf("Menor média: %.2f (%s)%n", menor, nomeMenor);
+
+            relatorio.println("========================================");
+            br.close();
+            aprovados.close();
+            relatorio.close();
+            System.out.println("Arquivos gerados com sucesso!");
+        }
+        catch (IOException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+    }
+}
