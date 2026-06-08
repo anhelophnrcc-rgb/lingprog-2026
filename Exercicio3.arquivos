@@ -1,0 +1,29 @@
+import java.io.*;
+import java.util.Date;
+import java.util.Scanner;
+
+// Diário Pessoal com Modo Append
+
+public class exercicio3 {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+
+        try { System.out.print("Digite sua anotação: ");
+            String texto = entrada.nextLine();
+            PrintWriter pw = new PrintWriter( new FileWriter("diario.txt", true) );
+
+            pw.println(new Date() + " | " + texto);
+            pw.close(); System.out.println("\n=== Diário ===");
+            BufferedReader br = new BufferedReader( new FileReader("diario.txt") );
+            String linha;
+            while ((linha = br.readLine()) != null) {
+                System.out.println(linha);
+            }
+            br.close();
+        }
+        catch (IOException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+        entrada.close();
+    }
+}
