@@ -1,0 +1,74 @@
+public class ContaBancaria {
+
+    //variaves de classe (static)
+
+    static int totalContas = 0;
+    static final double TAXA_MANUTENCAO = 12.0;
+
+    // variaves de isntância
+    String titular;
+    String numero;
+    double saldo;
+
+    //construtor padrao
+    public ContaBancaria() {
+        this("Sem titular", "0000", 0.0);
+    }
+
+    //contrutor co parametros (sobrecarga)
+    public ContaBancaria(String titular, String numero, double saldoInicial) {
+        this.titular = titular;
+        this.numero = numero;
+        this.saldo = saldoInicial;
+        totalContas++;    //atualiza a variavel de classe
+    }
+
+    // metodos de instância
+    public void depositar(double valor) {
+        if (valor > 0) saldo += valor;
+    }
+
+    public void sacar(double valor) {
+        if (valor > 0 && valor <= saldo) saldo -= valor;
+        else System.out.println("Saldo Insuficiente!");
+    }
+
+    public void exibirDados() {
+        System.out.println("Titular: " + titular);
+        System.out.println("Numero:" + numero);
+        System.out.println("Saldo: R$ " + saldo);
+    }
+
+    //metodos de classe (static)
+    public static int getTotalContas() {
+        return totalContas;
+    }
+
+    public static double getTaxaManutencao() {
+        return TAXA_MANUTENCAO;
+    }
+}
+public class TestaContaBancaria {
+        public static void main (String [] args) {
+            //criando objetos (instancas) a partir da classe
+            ContaBancaria conta1 = new ContaBancaria("Ana Souza", "1001", 500.);
+            ContaBancaria conta2 = new ContaBancaria("Carlos Lima","1002", 1000.0);
+            ContaBancaria conta3 = new ContaBancaria();   //construtor
+
+            //chamando metodos de instancia
+            conta1.depositar(200.0);
+            conta1.sacar(150.0);
+            conta1.exibirDados();
+
+            conta2.depositar(50.0);
+            conta2.exibirDados();
+
+            conta3.exibirDados();
+
+            //chamando metodo class (static) pelo nome da classe
+            System.out.println("Total de contas: " + ContaBancaria.getTotalContas());
+            System.out.println("Taxa manutencao: R$ " + ContaBancaria.getTaxaManutencao());
+        }
+}
+
+
