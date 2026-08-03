@@ -1,0 +1,77 @@
+public class Livro {
+    // variavel da class static
+    static int totalLivros = 0;
+
+    //variaveis de instancia
+    String titulo;
+    String autor;
+    boolean disponivel;
+
+    // construtor padrao
+    public Livro() {
+        this("Sem Título", "Autor Desconhecido");
+    }
+
+    //construtor com parametros
+    public Livro (String titulo, String autor) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.disponivel = true;
+        totalLivros++;
+    }
+
+    //metodo de classe
+    public static int getTotalLivros() {
+        return totalLivros;
+    }
+
+    //metodo emprestar
+    public void emprestar() {
+        if (disponivel) {
+            disponivel = false;
+            System.out.println("Livro emprestado com sucesso!");
+        } else {
+            System.out.println("Livro já esta emprestado!");
+        }
+    }
+
+    //metodo devolver
+    public void devolver() {
+        disponivel = true;
+        System.out.println("Livro devolvido com sucesso!");
+    }
+
+    //metodo exibir ficha
+    public void exibirFicha() {
+
+        System.out.println("Título: " + titulo);
+        System.out.println("Autor: " + autor);
+
+        if (disponivel) {
+            System.out.println("Status: Disponivel");
+        } else {
+            System.out.println("Status: Emprestado");
+        }
+        System.out.println("----------------------------");
+    }
+}
+class BibliotecaApp {
+
+    public static void main(String[] args) {
+
+        Livro livro1 = new Livro();
+        Livro livro2 = new Livro("Dom Casmurro", "Machado de Assis");
+        Livro livro3 = new Livro("Harry Potter", "J. K. Rowling");
+
+        livro2.emprestar();
+        livro3.emprestar();
+
+        livro2.devolver();
+
+        livro1.exibirFicha();
+        livro2.exibirFicha();
+        livro3.exibirFicha();
+
+        System.out.println("Total de livros: " + Livro.getTotalLivros());
+    }
+}
