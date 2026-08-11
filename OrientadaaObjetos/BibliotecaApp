@@ -1,0 +1,20 @@
+public class BibliotecaApp {
+
+    public static void main(String[] args) {
+
+        Livro livro1 = new Livro();
+        Livro livro2 = new Livro("Dom Casmurro", "Machado de Assis");
+        Livro livro3 = new Livro("Metamorfose", "Franz Kafka");
+
+        livro2.emprestar();
+        livro3.emprestar();
+
+        livro2.devolver();
+
+        livro1.exibirFicha();
+        livro2.exibirFicha();
+        livro3.exibirFicha();
+
+        System.out.println("Total de livros: " + Livro.getTotalLivros());
+    }
+}
