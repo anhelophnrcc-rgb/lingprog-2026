@@ -1,0 +1,52 @@
+public class Livro {
+    // variavel da class static
+    static int totalLivros = 0;
+
+    //variaveis de instancia
+    String titulo;
+    String autor;
+    boolean disponivel;
+
+    // construtor padrao
+    public Livro() {
+
+        this("Sem Título", "Autor Desconhecido");
+    }
+
+    //construtor com parametros
+    public Livro (String titulo, String autor) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.disponivel = true;
+        totalLivros++;
+    }
+
+    //metodo de classe
+    public static int getTotalLivros() {
+        return totalLivros;
+    }
+
+    //metodo emprestar
+    public void emprestar() {
+        if(this.disponivel){
+            System.out.println("Livro emprestado");
+            this.disponivel = false;
+        } else {
+            System.out.println("Esse livro ja foi emprestado");
+        }
+    }
+
+    //metodo devolver
+    public void devolver() {
+        disponivel = true;
+        System.out.println("Livro devolvido com sucesso!");
+    }
+
+    //metodo exibir ficha
+    public void exibirFicha() {
+
+        System.out.println();
+        System.out.println("Titulo do livro: " + this.titulo +
+                "\nAutor do livro: " + this.autor+ (this.disponivel ? "\nDisponivel" : "Emprestado"));
+    }
+}
