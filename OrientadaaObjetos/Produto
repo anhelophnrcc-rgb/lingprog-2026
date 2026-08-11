@@ -1,0 +1,43 @@
+public class Produto {
+
+    //variavel de classe static
+    static int totalProdutos = 0;
+
+    //variaveis de instancia
+    String nome;
+    double preco;
+    int quantidadeEstoque;
+
+    //contrutor padrao
+    public Produto() {
+        this("Produto sem nome", 0.0, 0);
+    }
+
+    //construtor com paramentros
+    public Produto (String nome, double preco, int quantidadeInicial){
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidadeEstoque = quantidadeInicial;
+
+        totalProdutos++;
+    }
+    //metodos de classe
+    public static int getTotalProdutos(){
+        return totalProdutos;
+    }
+    public void vender(int quantidade) {
+        if(quantidade <= quantidadeEstoque){
+            quantidadeEstoque -= quantidade;
+        } else {
+            System.out.println("Estoque Insuficiente");
+        }
+    }
+    public void repor(int quantidade){
+        quantidadeEstoque += quantidade;
+    }
+    public void exibirDados(){
+        System.out.println("Nome: " + nome);
+        System.out.println("Preço: " + preco);
+        System.out.println("Estoque: "+ quantidadeEstoque);
+    }
+}
