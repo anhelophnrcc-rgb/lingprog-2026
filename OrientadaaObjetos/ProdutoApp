@@ -1,0 +1,40 @@
+public class ProdutoApp {
+    public static void main(String [] args){
+
+        //criando produtos usando dois construtores
+        Produto p1 = new Produto("Feijão", 8.50,20);
+        Produto p2 = new Produto("Arroz", 20.00,10);
+
+        //criando o p3 sem paramentros
+        Produto p3 = new Produto();
+
+        System.out.println("=== ESTADO INICIAL ===");
+        p1.exibirDados();
+        System.out.println();
+        p2.exibirDados();
+        System.out.println();
+        p3.exibirDados();
+        System.out.println();
+
+        // 2. Testando o método vender()
+        System.out.println("\n=== TESTANDO VENDAS ===");
+        System.out.println("Vendendo 5 unidades de Feijão:");
+        p1.vender(5);
+        p1.exibirDados();
+
+        System.out.println("\nTentando vender 15 unidades de Arroz (estoque tem 10):");
+        p2.vender(15); // Deve exibir "Estoque insuficiente"
+
+        // 3. Testando o método repor()
+        System.out.println("\n=== TESTANDO REPOSIÇÃO ===");
+        System.out.println("Repondo 10 unidades de Arroz:");
+        p2.repor(10);
+        p2.exibirDados();
+
+        // 4. Testando a variável/método static (total de produtos criados)
+        System.out.println("\n=== TOTAL DE PRODUTOS CRIADOS ===");
+        System.out.println("Total: " + Produto.getTotalProdutos());
+    }
+}
+
+
