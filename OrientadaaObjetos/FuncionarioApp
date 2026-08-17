@@ -1,0 +1,35 @@
+public class FuncionarioApp {
+
+    private static void mostrarFuncionario(Funcionario f) {
+        System.out.println("Nome: " + f.getNome()
+                + " | Salario: " + f.getSalario()
+                + " | Carga horaria: " + f.getCargaHorariaSemanal());
+    }
+
+    public static void main(String[] args){
+        Funcionario f1 = new Funcionario("Ana Souza", 2500.0, 40);
+        Funcionario f2 = new Funcionario("MArcos", 3200.0, 55);
+
+        System.out.println();
+        mostrarFuncionario(f1);
+        mostrarFuncionario(f2);
+
+        System.out.println();
+
+        System.out.println("\n-- Nome --");
+        f1.setNome("Ana Souza Pereira");
+        f1.setNome("A".repeat(51));
+
+        System.out.println("\n-- Salario --");
+        f1.setSalario(3000.0);
+        f1.setSalario(-100);
+
+        System.out.println("\n-- Carga horaria --");
+        f1.setCargaHorariaSemanal(44);
+        f1.setCargaHorariaSemanal(50);
+
+        System.out.println("\n=== Estado final ===");
+        mostrarFuncionario(f1);
+        mostrarFuncionario(f2);
+    }
+}
