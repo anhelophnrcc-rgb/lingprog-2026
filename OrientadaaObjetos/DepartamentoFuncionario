@@ -1,0 +1,23 @@
+public class Departamento {
+  //Agregação
+    private String nome;
+    private Funcionario responsavel;
+
+    public Departamento(String nome){
+        this.nome = nome;
+    }
+    //aparte ja existe e é recebida de fora-Agregacao
+    public void definirResponsavel(Funcionario funcionario){
+        this.responsavel = funcionario;
+    }
+    public static void main(String [] args){
+
+        Funcionario funcionario = new Funcionario("João");
+
+        Departamento departamento = new Departamento("Almoxerifado");
+
+        departamento.definirResponsavel(funcionario);
+
+        System.out.println("Responsável: "+ funcionario.getNome());
+    }
+}
