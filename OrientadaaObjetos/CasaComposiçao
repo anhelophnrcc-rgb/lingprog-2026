@@ -1,0 +1,30 @@
+public class Casa {
+
+    private String endereco;
+    private Comodo salaPrincipal;
+    private Comodo cozinha;
+
+    //os comodos nascem junto com a casa- composição
+
+    public Casa(String endereco) {
+        this.endereco = endereco;
+        this.salaPrincipal = new Comodo("Sala");
+        this.cozinha = new Comodo("Cozinha");
+    }
+
+        public String getSalaPrincipal() {
+            return salaPrincipal.getNome();
+        }
+
+        public String getCozinha() {
+            return cozinha.getNome();
+
+    }
+    public static void main(String [] args){
+        Casa casa = new Casa("Rua das Flores, 100");
+
+        System.out.println("Casa criada");
+        System.out.println("Cômodo: " + casa.getSalaPrincipal());
+        System.out.println("Cômodo: " + casa.getCozinha());
+    }
+}
