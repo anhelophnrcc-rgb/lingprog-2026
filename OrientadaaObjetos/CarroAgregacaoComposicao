@@ -1,0 +1,28 @@
+public class Carro {
+
+    private String modelo;
+    private Motor motor; //composição
+    private Motorista motorista; //agregaçao
+
+    //o Motor nasce junto com o carro
+    public Carro(String modelo, String tipoMotor){
+        this.modelo = modelo;
+
+        this.motor = new Motor(tipoMotor);
+    }
+    //Motorista é recebido de fora
+    public void definirMotorista( Motorista motorista){
+        this.motorista = motorista;
+    }
+
+    public static void main (String [] args){
+
+        Motorista motorista = new Motorista("João");
+        Carro carro = new Carro("Sedan","1.0 Flex");
+        carro.definirMotorista(motorista);
+
+        System.out.println("Carro criado!");
+        System.out.println("Motorista: " + motorista.getNome());
+
+    }
+}
