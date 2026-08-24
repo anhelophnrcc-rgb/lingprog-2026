@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+
+public class Biblioteca {
+    private String nome, endereco;
+    // vetor de livros
+    private ArrayList<Livro> livros;
+
+    public Biblioteca(){
+
+        this("Sem nome", "Sem endereço");
+    }
+
+    public Biblioteca(String nome, String endereco){
+        this.setNome(nome);
+        this.setEndereco(endereco);
+
+        // Aloca espaço na memória para vetor
+        livros = new ArrayList<>();
+    }
+
+    // Adiciona livro - agregação -> Livro já vem criado
+    public void adiciciona(Livro livro){
+        this.livros.add(livro);
+    }
+
+    // consulta o acervo
+    public void consultaAcervo(){
+        // percorre o vetor de livros
+        for (Livro livro : this.livros) { // para cada item do vetor livros
+            System.out.printf("Título: %s\nAutor: %s\n", livro.getTitulo(), livro.getAutor());
+        }
+    }
+
+    public void emprestar(String titulo){
+        for(Livro livro: this.livros){
+            if(livro.getTitulo().equals(titulo)){
+                livro.emprestar(); // Emprestou o livro
+            }
+        }
+    }
+    public void setNome(String nome) {this.nome = nome;}
+    public void setEndereco(String endereco) {this.endereco = endereco;}
+
+    public String getNome() {
+        return nome;
+    }
+    public String getEndereco() {
+        return endereco;
+    }
+}
