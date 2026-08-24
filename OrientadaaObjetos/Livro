@@ -1,0 +1,54 @@
+public class Livro{
+
+    private String titulo, autor, editora;
+    private int ano;
+    private boolean disponivel;
+
+    public Livro(){
+        this("Sem título", "Sem autor", "Sem editora", 0000);
+    }
+
+    public Livro(String tittulo, String autor, String editora, int ano){
+        this.setTitulo(tittulo);
+        this.setAutor(autor);
+        this.setEditora(editora);
+        this.setAno(ano);
+        this.disponivel = true;
+    }
+
+    public void emprestar(){
+        this.disponivel = !this.disponivel;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+    public void setEditora(String editora) {
+        this.editora = editora;
+    }
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+    public void setDisponivel(boolean dis){
+        this.disponivel = dis;
+    }
+
+    public String getTitulo() {
+        return this.titulo;
+    }
+    public String getAutor() {
+        return this.autor;
+    }
+    public String getEditora() {
+        return this.editora;
+    }
+    public int getAno() {
+        return this.ano;
+    }
+    public boolean isDisponivel(){
+        return this.disponivel;
+    }
+}
