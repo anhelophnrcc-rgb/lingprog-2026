@@ -1,0 +1,66 @@
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+
+public class Pedido {
+     private int numero;
+     private LocalDateTime data;
+     private float valor;
+     private String cliente;
+     //vetor
+     private ArrayList<ItemPedido> itens;
+
+     public Pedido() {
+          this(0, LocalDateTime.now(),  "sem cliente");
+     }
+
+     public Pedido(int numero, LocalDateTime data, String cliente) {
+          this.setNumero(numero);
+          this.setData(data);
+          this.valor = 0;
+          this.setCliente(cliente);
+          this.itens = new ArrayList<ItemPedido>();
+     }
+     public void adicionaItemPedido(String produto, float valor, int qtde){
+          this.itens.add(new ItemPedido(produto, valor, qtde));
+          this.valor = this.valor + (valor * qtde);//altera valor do pedido
+     }
+     public void exibeItens(){
+          System.out.println("Intes do Pedido: ");
+          for (ItemPedido itemPedido : this.itens){
+               System.out.println("Produto: " + itemPedido.getProduto() +
+                       "Qtde: " + itemPedido.getQtde() +
+                       "Valor: " + itemPedido.getValor());
+          }
+     }
+     public int getNumero() {
+          return numero;
+     }
+
+     public void setNumero(int numero) {
+          this.numero = numero;
+     }
+
+     public LocalDateTime getData() {
+          return data;
+     }
+
+     public void setData(LocalDateTime data) {
+          this.data = data;
+     }
+
+     public float getValor() {
+          return valor;
+     }
+
+     public void setValor(float valor) {
+          this.valor = valor;
+     }
+
+     public String getCliente() {
+          return cliente;
+     }
+
+     public void setCliente(String cliente) {
+          this.cliente = cliente;
+     }
+}
