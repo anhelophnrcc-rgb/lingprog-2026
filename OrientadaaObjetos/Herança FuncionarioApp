@@ -1,0 +1,16 @@
+public class FuncionarioApp{
+    public static void main(String[] args){
+
+        Funcionario fu = new Funcionario("Breno", 3000);
+        System.out.println("Dados do funcionario Breno");
+        fu.exibirDados();
+
+        Gerente ge = new Gerente("Ana", 5000, 1000);
+        System.out.println("Dados da gerente Ana");
+        ge.exibirDados();
+
+        Vendedor ve = new Vendedor("Rodrigo",4000, 50000);
+        System.out.println("Dados do vendedor Rodrigo");
+        ve.exibirDados();
+    }
+}
