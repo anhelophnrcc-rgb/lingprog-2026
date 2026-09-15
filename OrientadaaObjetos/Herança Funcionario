@@ -1,0 +1,41 @@
+public class Funcionario {
+    //protected => deixa a variavel publica para as filhas
+    protected String nome;
+    protected double salario;
+
+    public Funcionario() {
+        this("sem nome", 0);
+    }
+
+    public Funcionario(String nome, double salario) {
+        this.nome = nome;
+        this.salario = salario;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    // calcula metodo para qualquer funcionario
+    public double calcularBonus(){
+        return this.salario * 0.15; //15% de bonus
+    }
+    public void exibirDados(){
+        System.out.println("\nNome: " + this.nome +
+                "\nSalário: " + this.salario +
+                "\nBonus: " + this.calcularBonus() +
+                "\nTotal a receber: " + (this.calcularBonus()+ this.salario));
+    }
+}
