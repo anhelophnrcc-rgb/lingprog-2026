@@ -1,0 +1,15 @@
+public class TurmaApp {
+
+    public static void main(String [] args){ // criando o professor independente da turma
+
+        Professor prof = new Professor("Carlos Silva", "Programaçao orientada a objetos");
+
+        // criando turma e associando o professor
+        Turma turma = new Turma("3 Semestre ADS", prof);
+
+        System.out.println("Turma: " + turma.getNome());
+        System.out.println("Professor: " + turma.getProfessor().getNome());
+        System.out.println("Especialidade: " + turma.getProfessor().getEspecialidade());
+
+    }
+}
