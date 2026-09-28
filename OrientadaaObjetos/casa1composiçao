@@ -1,0 +1,22 @@
+public class Casa {
+    private String endereco;
+    private ArrayList<Comodo> comodos; // Composição
+
+    public Casa(String endereco) {
+        this.endereco = endereco;
+        this.comodos = new ArrayList<>();
+        
+        // Os cômodos NASCEM junto com a casa internamente no construtor
+       
+        this.comodos.add(new Comodo("Quarto Principal", 12.5));
+        this.comodos.add(new Comodo("Sala de Estar", 18.0));
+        this.comodos.add(new Comodo("Cozinha", 10.2));
+    }
+
+    public void listarComodos() {
+        System.out.println("Cômodos da casa localizada em " + this.endereco + ":");
+        for (Comodo c : comodos) {
+            System.out.println("- " + c.getNome() + ": " + c.getAreaM2() + "m²");
+        }
+    }
+}
