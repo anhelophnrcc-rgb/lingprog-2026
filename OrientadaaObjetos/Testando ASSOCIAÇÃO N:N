@@ -1,0 +1,54 @@
+public class TesteAssociacaoNN {
+    public static void main(String[] args) {
+        
+        System.out.println("=== TESTANDO RELAÇÃO LIVRO x AUTOR ===");
+        // Cadastrar Livros e Autores
+        Livro l1 = new Livro("Dom Casmurro");
+        Livro l2 = new Livro("O Alienista");
+        Autor au1 = new Autor("Machado de Assis");
+        Autor au2 = new Autor("Daniel Pires"); // Autor convidado fictício
+
+        // Ligar usando o método estático autorar() que faz a sincronização
+        Autoria.autorar(l1, au1, "Autor Principal");
+        Autoria.autorar(l2, au1, "Autor Principal");
+        Autoria.autorar(l2, au2, "Coautor"); // O Alienista com dois autores para testar N:N
+
+        // Listar autores de cada livro (e o papel de cada um)
+        java.util.ArrayList<Livro> livros = new java.util.ArrayList<>();
+        livros.add(l1);
+        livros.add(l2);
+
+        for (Livro l : livros) {
+            System.out.println("Livro: " + l.getTitulo());
+            for (Autoria a : l.getAutorias()) {
+                System.out.println("  - Autor: " + a.getAutor().getNome() + " (" + a.getPapel() + ")");
+            }
+        }
+
+
+        System.out.println("\n=== TESTANDO RELAÇÃO ATOR x FILME ===");
+        // Cadastrar Atores e Filmes
+        Ator ator1 = new Ator("Carla Souza");
+        Ator ator2 = new Ator("Bruno Lima");
+        Filme filme1 = new Filme("Matrix Java");
+        Filme filme2 = new Filme("O Retorno do Objeto");
+
+        // Ligar usando o método estático atuar()
+        Atuacao.atuar(ator1, filme1, "Neo");
+        Atuacao.atuar(ator2, filme1, "Morpheus");
+        Atuacao.atuar(ator1, filme2, "Heroína Principal");
+
+        // Listar elenco de cada filme
+        java.util.ArrayList<Filme> filmes = new java.util.ArrayList<>();
+        filmes.add(filme1);
+        filmes.add(filme2);
+
+        for (Filme f : filmes) {
+            System.out.println("Filme: " + f.getTitulo());
+            System.out.println("  Elenco:");
+            for (Atuacao a : f.getElenco()) {
+                System.out.println("    * " + a.getAtor().getNome() + " como " + a.getPersonagem());
+            }
+        }
+    }
+}
