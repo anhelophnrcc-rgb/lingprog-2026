@@ -1,0 +1,18 @@
+public class Funcionario {
+    protected String nome;
+    protected double salario;
+
+    public Funcionario(String nome, double salario) {
+        this.nome = nome;
+        this.salario = salario;
+    }
+
+    // Método que será sobrescrito (Polimorfismo)
+    public double calcularBonus() {
+        return salario * 0.05; // Bônus padrão de 5%
+    }
+
+    public void exibirDados() {
+        System.out.println(nome + " - Salario: R$ " + salario + " - Bonus: R$ " + calcularBonus());
+    }
+}
