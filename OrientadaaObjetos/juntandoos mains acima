@@ -1,0 +1,34 @@
+public class TesteAssociacoes {
+    public static void main(String[] args) {
+        
+        System.out.println("=== 1. TESTANDO ASSOCIAÇÃO SIMPLES ===");
+        Professor prof = new Professor("Daniel Facciolo", "Programação Orientada a Objetos");
+        Turma turma = new Turma("ILP155 - POO", prof);
+        
+        System.out.println("Turma: " + turma.getNome());
+        System.out.println("Professor Responsável: " + turma.getProfessor().getNome());
+        System.out.println("Especialidade: " + turma.getProfessor().getEspecialidade());
+
+
+        System.out.println("\n=== 2. TESTANDO AGREGAÇÃO ===");
+        Time time = new Time("Java Futebol Clube");
+        
+        // Criando os jogadores fora do time (eles existem de forma independente)
+        Jogador j1 = new Jogador("Carla Silva", 10);
+        Jogador j2 = new Jogador("Bruno Santos", 7);
+        Jogador j3 = new Jogador("Felipe Oliveira", 1);
+        
+        // Agregando os jogadores ao time
+        time.adicionarJogador(j1);
+        time.adicionarJogador(j2);
+        time.adicionarJogador(j3);
+        
+        time.listarJogadores();
+
+
+        System.out.println("\n=== 3. TESTANDO COMPOSIÇÃO ===");
+        // Criamos apenas a Casa, e os cômodos já nascem lá dentro automaticamente
+        Casa minhaCasa = new Casa("Rua dos Desenvolvedores, 1024");
+        minhaCasa.listarComodos();
+    }
+}
