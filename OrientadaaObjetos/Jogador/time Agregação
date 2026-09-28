@@ -1,0 +1,23 @@
+import java.util.ArrayList;
+
+public class Time {
+    private String nome;
+    private ArrayList<Jogador> jogadores; 
+
+    public Time(String nome) {
+        this.nome = nome;
+        this.jogadores = new ArrayList<>();
+    }
+
+    // O jogador já existe e é recebido de fora (Agregação)
+    public void adicionarJogador(Jogador jogador) {
+        this.jogadores.add(jogador);
+    }
+
+    public void listarJogadores() {
+        System.out.println("Jogadores do " + this.nome + ":");
+        for (Jogador j : jogadores) {
+            System.out.println("- " + j.getNome() + " (Nº " + j.getNumeroCamisa() + ")");
+        }
+    }
+}
