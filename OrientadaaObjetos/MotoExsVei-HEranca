@@ -1,8 +1,8 @@
-public class Moto extends Veiculo { [25]
-    private int cilindradas; [25]
+public class Moto extends Veiculo { 
+    private int cilindradas; 
 
     public Moto(String marca, String ano, int cilindradas) {
-        super(marca, ano); // Chama o construtor da superclasse [25]
-        this.cilindradas = cilindradas; [25]
+        super(marca, ano); // Chama o construtor da superclasse 
+        this.cilindradas = cilindradas; 
     }
 }
