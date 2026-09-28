@@ -1,0 +1,15 @@
+import java.util.ArrayList;
+
+public class Filme {
+    private String titulo;
+    private ArrayList<Atuacao> elenco;
+
+    public Filme(String titulo) {
+        this.titulo = titulo;
+        this.elenco = new ArrayList<>();
+    }
+
+    public String getTitulo() { return titulo; }
+    public void adicionarAtuacao(Atuacao atuacao) { this.elenco.add(atuacao); }
+    public ArrayList<Atuacao> getElenco() { return elenco; }
+}
