@@ -1,0 +1,37 @@
+import java.util.ArrayList; 
+
+public class TesteHeranca { 
+    public static void main(String[] args) { 
+        
+        System.out.println("=== 1. POLIMORFISMO COM VEÍCULOS ===");
+        // Criando a ArrayList do tipo genérico da superclasse 
+        ArrayList<Veiculo> equipeVeiculos = new ArrayList<>(); 
+        
+        // Adicionando subclasses diferentes na mesma coleção 
+        equipeVeiculos.add(new Carro("Toyota Corolla", "2024", 4)); 
+        equipeVeiculos.add(new Moto("Honda CB 500", "2023", 500)); 
+
+        // Executando o laço: chama o método herdado de cada um 
+        for (Veiculo v : equipeVeiculos) { 
+            v.exibirDados(); 
+        }
+
+
+        System.out.println("\n=== 2. POLIMORFISMO COM FORMAS GEOMÉTRICAS ===");
+        // Criando a ArrayList de Formas 
+        ArrayList<Forma> formas = new ArrayList<>(); 
+        
+        formas.add(new Circulo(3.0)); // Raio = 3 
+        formas.add(new Retangulo(4.0, 5.0)); // Largura = 4, Altura = 5 
+
+        double somaTotalAreas = 0; 
+
+        // Executando o laço e somando as áreas dinamicamente 
+        for (Forma f : formas) { 
+            somaTotalAreas += f.calcularArea(); 
+        }
+
+        // Imprime o resultado final formatado 
+        System.out.printf("A soma total das áreas é: %.2f\n", somaTotalAreas); 
+    }
+}
