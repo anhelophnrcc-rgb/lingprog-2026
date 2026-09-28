@@ -1,4 +1,4 @@
 public class Forma {
-    public double calcularArea() { [26]
-        return 0; [26]
+    public double calcularArea() { 
+        return 0; 
     }
