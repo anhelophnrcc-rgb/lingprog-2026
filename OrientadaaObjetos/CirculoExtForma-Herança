@@ -1,12 +1,12 @@
-public class Circulo extends Forma { [26]
-    private double raio; [26]
+public class Circulo extends Forma { 
+    private double raio; 
 
     public Circulo(double raio) {
         this.raio = raio;
     }
 
-    @Override // Uso obrigatório conforme o enunciado [26]
-    public double calcularArea() { [26]
-        return Math.PI * raio * raio; [26]
+    @Override // Uso obrigatório conforme o enunciado 
+    public double calcularArea() { 
+        return Math.PI * raio * raio; 
     }
 }
