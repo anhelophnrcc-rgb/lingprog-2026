@@ -1,0 +1,13 @@
+public class Vendedor extends Funcionario {
+    private double totalVendas;
+
+    public Vendedor(String nome, double salario, double totalVendas) {
+        super(nome, salario);
+        this.totalVendas = totalVendas;
+    }
+
+    @Override
+    public double calcularBonus() {
+        return totalVendas * 0.10; // Comissão pura, ignora o bônus padrão de 5%
+    }
+}
