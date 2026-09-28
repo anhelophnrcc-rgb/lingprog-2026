@@ -1,0 +1,8 @@
+public class Carro extends Veiculo { [25]
+    private int numeroPortas; [25]
+
+    public Carro(String marca, String ano, int numeroPortas) {
+        super(marca, ano); // Chama o construtor da superclasse [25]
+        this.numeroPortas = numeroPortas; [25]
+    }
+}
