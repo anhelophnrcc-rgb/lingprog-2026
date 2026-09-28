@@ -1,0 +1,23 @@
+public class Autoria {
+    private Livro livro;
+    private Autor autor;
+    private String papel; // Atributo próprio do vínculo (ex: "coautor")
+
+    public Autoria(Livro livro, Autor autor, String papel) {
+        this.livro = livro;
+        this.autor = autor;
+        this.papel = papel;
+    }
+
+    public Livro getLivro() { return livro; }
+    public Autor getAutor() { return autor; }
+    public String getPapel() { return papel; }
+
+   
+    public static Autoria autorar(Livro livro, Autor autor, String papel) {
+        Autoria a = new Autoria(livro, autor, papel);
+        livro.adicionarAutoria(a); // Sincroniza o lado do livro
+        autor.adicionarAutoria(a); // Sincroniza o lado do autor
+        return a;
+    }
+}
