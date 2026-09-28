@@ -1,13 +1,13 @@
 public class Veiculo {
     protected String status = "Ativo"; // Apenas um exemplo de atributo protected
-    protected String marca; [25]
-    protected String ano; // Tratado como String ou int, conforme o slide [25]
+    protected String marca; 
+    protected String ano; // Tratado como String ou int, conforme o slide 
 
-    public Veiculo(String marca, String ano) { [25]
+    public Veiculo(String marca, String ano) { 
         this.marca = marca;
         this.ano = ano;
     }
 
-    public void exibirDados() { [25]
-        System.out.println("Marca: " + marca + " | Ano: " + ano); [25]
+    public void exibirDados() { 
+        System.out.println("Marca: " + marca + " | Ano: " + ano); 
     }
