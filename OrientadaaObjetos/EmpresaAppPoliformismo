@@ -1,0 +1,21 @@
+import java.util.ArrayList;
+
+public class EmpresaApp {
+    public static void main(String[] args) {
+        // Uma única lista que aceita qualquer tipo de funcionário
+        ArrayList<Funcionario> equipe = new ArrayList<>();
+
+        // Adicionando objetos de classes diferentes na mesma lista
+        equipe.add(new Funcionario("Ana", 3000.0));
+        equipe.add(new Gerente("Bruno", 5000.0, 800.0));
+        equipe.add(new Vendedor("Carla", 2000.0, 15000.0));
+
+        System.out.println("=== Saída no Console ===");
+        
+        // O laço não sabe (e nem precisa saber) a classe real de cada 'f'
+        for (Funcionario f : equipe) {
+            // O Java descobre o objeto real e chama o calcularBonus() correto de cada um!
+            f.exibirDados(); 
+        }
+    }
+}
